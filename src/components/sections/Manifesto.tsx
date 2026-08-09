@@ -27,14 +27,14 @@ export default function Manifesto() {
 
   if (!isMounted || reducedMotion) {
     return (
-      <section id="manifesto" className="bg-architectural-50 text-obsidian-900 py-24 md:py-32 relative light-scene divider-light-to-dark">
+      <section id="manifesto" className="bg-architectural-50 text-obsidian-900 py-24 md:py-32 relative light-scene">
         {content}
       </section>
     );
   }
 
   return (
-    <section id="manifesto" className="bg-architectural-50 text-obsidian-900 py-24 md:py-32 relative light-scene divider-light-to-dark">
+    <section id="manifesto" className="bg-architectural-50 text-obsidian-900 py-24 md:py-32 relative light-scene">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}

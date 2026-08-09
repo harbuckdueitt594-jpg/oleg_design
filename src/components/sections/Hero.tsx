@@ -98,15 +98,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative aspect-[3/4] w-full placeholder-gradient rounded-sm overflow-hidden border border-obsidian-900/10 shadow-xl filter contrast-125 saturate-50">
-          <div className="absolute inset-0 bg-architectural-50/10 mix-blend-overlay"></div>
-          <div className="absolute inset-0 flex items-center justify-center backdrop-blur-[2px]">
-            <span className="font-mono text-architectural-50/30 text-sm tracking-widest rotate-90 opacity-50">AXURE_RENDER</span>
-          </div>
+        <div className="relative aspect-[4/5] w-full bg-white border border-architectural-100 rounded-2xl overflow-hidden shadow-sm">
+          {/* Clean architectural container without gradients or smudges */}
         </div>
 
         {/* Floating Widget */}
-        <div className="absolute -bottom-6 -left-6 lg:left-auto lg:-right-6 light-glass p-4 rounded-xl shadow-2xl z-20 flex items-center gap-4">
+        <div className="absolute -bottom-6 -left-6 lg:left-auto lg:-right-6 light-glass p-4 rounded-xl shadow-2xl z-50 flex items-center gap-4">
            <div className="flex flex-col">
              <span className="font-mono text-[10px] text-obsidian-900/60 uppercase">Latest Project ↗</span>
              <span className="font-sans text-sm font-medium text-obsidian-900">EIDOS-STUDIO.RU</span>
@@ -119,7 +116,7 @@ export default function Hero() {
 
   if (!isMounted || reducedMotion) {
     return (
-      <section className="relative min-h-screen flex flex-col justify-center bg-architectural-50 pt-32 pb-24 overflow-hidden light-scene divider-light-to-dark">
+      <section className="relative min-h-screen flex flex-col justify-center bg-architectural-50 pt-32 pb-24 overflow-hidden light-scene">
         {content}
         <div className="absolute bottom-12 w-full">
            <div className="marquee-container opacity-40">
@@ -135,7 +132,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center bg-architectural-50 pt-32 pb-24 overflow-hidden light-scene divider-light-to-dark">
+    <section className="relative min-h-screen flex flex-col justify-center bg-architectural-50 pt-32 pb-24 overflow-hidden light-scene">
       {content}
       <motion.div
         className="absolute bottom-12 w-full"

@@ -22,7 +22,7 @@ export default function Portfolio() {
   );
 
   return (
-    <section id="works" className="bg-obsidian-900 text-architectural-50 py-32 dark-scene divider-dark-to-light pb-40">
+    <section id="works" className="bg-obsidian-900 text-architectural-50 py-32 dark-scene pb-40">
       <div className="container mx-auto px-6">
 
         <div className="mb-16 md:mb-24">

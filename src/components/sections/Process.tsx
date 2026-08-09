@@ -55,14 +55,14 @@ export default function Process() {
 
   if (!isMounted || reducedMotion) {
     return (
-      <section id="process" className="bg-architectural-50 py-24 md:py-32 light-scene divider-light-to-dark pb-40">
+      <section id="process" className="bg-architectural-50 py-24 md:py-32 light-scene pb-40">
         {content}
       </section>
     );
   }
 
   return (
-    <section id="process" className="bg-architectural-50 py-24 md:py-32 light-scene divider-light-to-dark pb-40">
+    <section id="process" className="bg-architectural-50 py-24 md:py-32 light-scene pb-40">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}

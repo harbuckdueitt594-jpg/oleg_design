@@ -24,7 +24,7 @@ export default function Header() {
   }, []);
 
   const headerContent = (
-    <div className={`container mx-auto px-6 h-16 flex items-center justify-between rounded-full mt-4 transition-colors duration-300 ${scrolled ? 'light-glass shadow-sm' : 'bg-transparent'}`}>
+    <div className={`container mx-auto px-6 h-16 flex items-center justify-between rounded-full mt-4 transition-colors duration-300 ${scrolled ? 'light-glass z-50' : 'bg-transparent z-50'}`}>
       <Link href="/" className="font-sans font-medium tracking-tight text-obsidian-900 text-lg group">
         <span className="transition-colors duration-200">OLEG</span>{" "}
         <span className="text-metallic-slate group-hover:text-obsidian-900 transition-colors duration-200">CHERNIKOV</span>

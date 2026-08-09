@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian-900: #121316;
+  --color-obsidian-900: #111215;
   --color-obsidian-800: #1C1E23;
-  --color-architectural-50: #F2F3F5;
+  --color-architectural-50: #F5F5F7;
   --color-architectural-100: rgba(0, 0, 0, 0.08);
   --color-electric-lime: #FF3B30;
   --color-metallic-slate: #8E929B;
@@ -42,47 +42,23 @@ body {
 }
 
 .light-glass {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 .dark-glass {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(24px);
+  background: rgba(20, 22, 26, 0.65);
+  backdrop-filter: blur(25px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* Glassmorphic Gradient Dividers */
-.divider-dark-to-light {
-  position: relative;
-}
-.divider-dark-to-light::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, var(--color-architectural-50));
-  pointer-events: none;
-}
 
-.divider-light-to-dark {
-  position: relative;
-}
-.divider-light-to-dark::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, var(--color-obsidian-900));
-  pointer-events: none;
-}
+
+
 
 
 /* Image Placeholder Gradients */
@@ -111,7 +87,7 @@ body {
   display: flex;
   overflow: hidden;
   white-space: nowrap;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+
 }
 
 .marquee-content {
