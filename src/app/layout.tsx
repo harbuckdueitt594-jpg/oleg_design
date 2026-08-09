@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/layout/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +33,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased scroll-smooth`}
     >
-      <body className="bg-obsidian-900 text-architectural-50 font-sans min-h-screen flex flex-col selection:bg-electric-lime selection:text-obsidian-900">
-        <SmoothScroll>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScroll>
+      <body className="bg-architectural-50 text-obsidian-900 font-sans min-h-screen flex flex-col selection:bg-electric-lime selection:text-obsidian-900">
+        <Header />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

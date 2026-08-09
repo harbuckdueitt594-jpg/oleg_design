@@ -3,10 +3,17 @@
 import { portfolioData } from "@/data/portfolio";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setIsMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,37 +23,46 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const headerContent = (
+    <div className={`container mx-auto px-6 h-16 flex items-center justify-between rounded-full mt-4 transition-colors duration-300 ${scrolled ? 'light-glass shadow-sm' : 'bg-transparent'}`}>
+      <Link href="/" className="font-sans font-medium tracking-tight text-obsidian-900 text-lg group">
+        <span className="transition-colors duration-200">OLEG</span>{" "}
+        <span className="text-metallic-slate group-hover:text-obsidian-900 transition-colors duration-200">CHERNIKOV</span>
+      </Link>
+
+      <nav className="hidden md:flex items-center gap-8 text-sm font-mono text-obsidian-900/70">
+        <Link href="#works" className="hover:text-obsidian-900 transition-colors duration-200">WORKS</Link>
+        <Link href="#tech" className="hover:text-obsidian-900 transition-colors duration-200">TECH</Link>
+        <Link href="#process" className="hover:text-obsidian-900 transition-colors duration-200">PROCESS</Link>
+      </nav>
+
+      <a
+        href={portfolioData.contacts.telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-5 py-2.5 bg-obsidian-900 text-architectural-50 font-sans font-medium text-sm rounded-full hover:bg-electric-lime hover:text-obsidian-900 hover:shadow-[0_0_15px_rgba(212,255,0,0.3)] transition-all duration-200"
+      >
+        Обсудить проект
+      </a>
+    </div>
+  );
+
+  if (!isMounted || reducedMotion) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50">
+        {headerContent}
+      </header>
+    );
+  }
+
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-obsidian-900/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-      }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="font-sans font-medium tracking-tight text-architectural-50 text-lg group">
-          <span className="group-hover:text-electric-lime transition-colors duration-300">OLEG</span>{" "}
-          <span className="text-metallic-slate group-hover:text-architectural-50 transition-colors duration-300">CHERNIKOV</span>
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-8 text-sm font-mono text-metallic-slate">
-          <Link href="#manifesto" className="hover:text-electric-lime transition-colors">MANIFESTO</Link>
-          <Link href="#works" className="hover:text-electric-lime transition-colors">WORKS</Link>
-          <Link href="#tech" className="hover:text-electric-lime transition-colors">TECH</Link>
-          <Link href="#process" className="hover:text-electric-lime transition-colors">PROCESS</Link>
-        </nav>
-
-        <a
-          href={portfolioData.contacts.telegram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-5 py-2.5 bg-electric-lime text-obsidian-900 font-sans font-medium text-sm rounded-full hover:scale-105 hover:shadow-[0_0_20px_rgba(212,255,0,0.4)] transition-all duration-300"
-        >
-          Let&apos;s work
-        </a>
-      </div>
+      {headerContent}
     </motion.header>
   );
 }

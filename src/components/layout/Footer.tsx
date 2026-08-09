@@ -1,73 +1,67 @@
 'use client';
 
 import { portfolioData } from "@/data/portfolio";
-import { Link2, Mail, MessageCircle, Send } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 import { motion } from "framer-motion";
 
 export default function Footer() {
-  return (
-    <footer id="contact" className="bg-obsidian-800 text-architectural-50 py-32 border-t border-white/5 relative overflow-hidden">
-      {/* Decorative accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-electric-lime/50 to-transparent"></div>
+  const reducedMotion = useReducedMotion();
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setIsMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
-      <div className="container mx-auto px-6 text-center max-w-4xl relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-serif text-5xl md:text-7xl mb-12 uppercase"
+
+  const content = (
+    <div className="container mx-auto px-6">
+      <div className="max-w-4xl mx-auto text-center mb-24">
+        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-12">
+          Let&apos;s create something <span className="italic text-white/50">extraordinary.</span>
+        </h2>
+        <a
+          href={portfolioData.contacts.telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-electric-lime text-obsidian-900 font-sans text-xl rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(212,255,0,0.4)] transition-all duration-300 group"
         >
-          Ready to elevate <br className="hidden md:block"/>
-          <span className="text-electric-lime/90 italic">your brand?</span>
-        </motion.h2>
+          Write on Telegram
+          <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform duration-300" />
+        </a>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mb-16"
-        >
-          <a
-            href={portfolioData.contacts.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-electric-lime text-obsidian-900 rounded-full font-sans font-semibold text-lg hover:shadow-[0_0_40px_rgba(212,255,0,0.4)] hover:scale-105 transition-all duration-300"
-          >
-            <Send className="w-5 h-5" />
-            Write on Telegram
-          </a>
-        </motion.div>
+      <div className="flex flex-col md:flex-row justify-between items-center py-8 border-t border-white/10 text-sm font-mono text-metallic-slate">
+        <p>&copy; {new Date().getFullYear()} OLEG CHERNIKOV. ALL RIGHTS RESERVED.</p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-8 items-center text-metallic-slate"
-        >
-          <a href={portfolioData.contacts.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime transition-colors" aria-label="WhatsApp">
-            <MessageCircle className="w-6 h-6" />
-          </a>
-          <a href={portfolioData.contacts.email} target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime transition-colors" aria-label="Email">
-            <Mail className="w-6 h-6" />
-          </a>
-          <a href={portfolioData.contacts.behance} target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime transition-colors font-serif italic text-xl" aria-label="Behance">
-            Bē
-          </a>
-          <a href={portfolioData.contacts.github} target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime transition-colors font-serif italic text-xl" aria-label="GitHub">
-            Git
-          </a>
-          <a href={portfolioData.contacts.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-electric-lime transition-colors" aria-label="LinkedIn">
-            <Link2 className="w-6 h-6" />
-          </a>
-        </motion.div>
-
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-metallic-slate/50">
-          <p>© {new Date().getFullYear()} Oleg Chernikov.</p>
-          <p>Direction KA Engineering / AI-Creator / Design</p>
+        <div className="flex gap-6 mt-4 md:mt-0">
+          <a href={portfolioData.contacts.behance} className="hover:text-electric-lime transition-colors">Behance</a>
+          <a href={portfolioData.contacts.github} className="hover:text-electric-lime transition-colors">GitHub</a>
+          <a href={portfolioData.contacts.linkedin} className="hover:text-electric-lime transition-colors">LinkedIn</a>
         </div>
       </div>
+    </div>
+  );
+
+  if (!isMounted || reducedMotion) {
+    return (
+      <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene border-t border-white/5">
+        {content}
+      </footer>
+    );
+  }
+
+  return (
+    <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene border-t border-white/5">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {content}
+      </motion.div>
     </footer>
   );
 }
