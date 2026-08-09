@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian-900: #050505;
+  --color-obsidian-800: #0C0D0E;
+  --color-architectural-50: #FAFAFA;
+  --color-architectural-100: #F4F4F6;
+  --color-electric-lime: #D4FF00;
+  --color-metallic-slate: #A2A8B3;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-architectural-100);
+    --foreground: var(--color-obsidian-900);
+  }
+
+  .dark {
+    --background: var(--color-obsidian-800);
+    --foreground: var(--color-architectural-50);
+  }
+}
+
+body {
+  background-color: var(--color-architectural-50);
+  color: var(--color-obsidian-900);
+}
+
+.dark-section {
+  background-color: var(--color-obsidian-900);
+  color: var(--color-architectural-50);
+}
+
+.light-section {
+  background-color: var(--color-architectural-100);
+  color: var(--color-obsidian-900);
+}
+
+/* Image Placeholder Gradients */
+.placeholder-gradient {
+  background: linear-gradient(135deg, #0C0D0E 0%, #1F2023 100%);
+  border: 1px solid rgba(162, 168, 179, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(212, 255, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 255, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
