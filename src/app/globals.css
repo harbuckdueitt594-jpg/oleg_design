@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian-900: #090A0C;
-  --color-obsidian-800: #111215;
-  --color-architectural-50: #FBFBFD;
+  --color-obsidian-900: #121316;
+  --color-obsidian-800: #1C1E23;
+  --color-architectural-50: #F2F3F5;
   --color-architectural-100: rgba(0, 0, 0, 0.08);
-  --color-electric-lime: #D4FF00;
-  --color-metallic-slate: #A2A8B3;
+  --color-electric-lime: #FF3B30;
+  --color-metallic-slate: #8E929B;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -42,20 +42,52 @@ body {
 }
 
 .light-glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .dark-glass {
-  background: rgba(17, 18, 21, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
+
+/* Glassmorphic Gradient Dividers */
+.divider-dark-to-light {
+  position: relative;
+}
+.divider-dark-to-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-architectural-50));
+  pointer-events: none;
+}
+
+.divider-light-to-dark {
+  position: relative;
+}
+.divider-light-to-dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-obsidian-900));
+  pointer-events: none;
+}
+
 
 /* Image Placeholder Gradients */
 .placeholder-gradient {
-  background: linear-gradient(135deg, #111215 0%, #090A0C 100%);
+  background: linear-gradient(135deg, #1C1E23 0%, #121316 100%);
   position: relative;
   overflow: hidden;
 }
@@ -68,9 +100,26 @@ body {
   right: 0;
   bottom: 0;
   background-image:
-    linear-gradient(rgba(212, 255, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 255, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255, 59, 48, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 59, 48, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.5;
   pointer-events: none;
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

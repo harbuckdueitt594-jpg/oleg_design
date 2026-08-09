@@ -33,10 +33,10 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   author: {
-    name: "Oleg Chernikov",
+    name: "CHERNIKOV // CREATIVE DIRECTION & AI ENGINEERING",
     role: "Direction KA Engineering / AI-Creator / Design",
-    tagline: "Я соединяю эстетику премиального арт-дирекшна с технологиями искусственного интеллекта.",
-    manifesto: "Создаю визуальные экосистемы, бренд-вес и кастомных ИИ-ассистентов, сокращая Time-to-Market в 3–5 раз без потери качества.",
+    tagline: "Я соединяю эстетику премиального арт-дирекшна с технологиями искусственного интеллекта. Создаю визуальные экосистемы, бренд-вес и кастомных ИИ-ассистентов, сокращая Time-to-Market в 3–5 раз без потери качества.",
+    manifesto: "Я соединяю эстетику премиального арт-дирекшна с технологиями искусственного интеллекта. Создаю визуальные экосистемы, бренд-вес и кастомных ИИ-ассистентов, сокращая Time-to-Market в 3–5 раз без потери качества.",
     metrics: [
       { label: "Time-to-Market", value: "3-5x Faster" },
       { label: "Web Launch", value: "7 Days" },
