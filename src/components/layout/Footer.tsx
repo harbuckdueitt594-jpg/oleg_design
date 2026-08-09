@@ -46,14 +46,14 @@ export default function Footer() {
 
   if (!isMounted || reducedMotion) {
     return (
-      <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene border-t border-white/5">
+      <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene">
         {content}
       </footer>
     );
   }
 
   return (
-    <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene border-t border-white/5">
+    <footer className="bg-obsidian-900 text-architectural-50 pt-32 pb-8 dark-scene">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}

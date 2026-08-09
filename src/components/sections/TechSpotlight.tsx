@@ -72,14 +72,14 @@ export default function TechSpotlight() {
 
   if (!isMounted || reducedMotion) {
     return (
-      <section id="tech" className="bg-obsidian-900 text-architectural-50 py-24 md:py-32 dark-scene border-t border-white/5">
+      <section id="tech" className="bg-obsidian-900 text-architectural-50 py-24 md:py-32 dark-scene divider-dark-to-light pb-40">
         {content}
       </section>
     );
   }
 
   return (
-    <section id="tech" className="bg-obsidian-900 text-architectural-50 py-24 md:py-32 dark-scene border-t border-white/5">
+    <section id="tech" className="bg-obsidian-900 text-architectural-50 py-24 md:py-32 dark-scene divider-dark-to-light pb-40">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
